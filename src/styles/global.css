@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'MyFont';
+    src: url('/trainee-app/public/SegoeUIVF.ttf') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'MyFont', sans-serif;
+    background-color: #F6F8FA; 
+    padding-left: 105px;
+    padding-right: 105px;
+    padding-top: 25px;
+    overflow-y: scroll;
+}
+
+p{
+    opacity: .9;
+    color: #1E1E1E;
+}
+
+h1{
+    color: #1E1E1E;
+}
+
+h2{
+    color: #1E1E1E;
+}
+
+h3{
+    color: #1E1E1E;
+}
+
+span{
+    color: #1E1E1E;
+}

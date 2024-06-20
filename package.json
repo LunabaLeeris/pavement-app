@@ -9,9 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.40.1",
+    "dotenv": "^16.4.5",
+    "mysql2": "^3.10.0",
+    "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.3"
+    "react-query": "^3.39.3",
+    "util": "^0.12.5",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "eslint": "^8",
