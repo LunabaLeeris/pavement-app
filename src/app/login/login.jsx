@@ -11,7 +11,8 @@ export default function Login() {
     const [classification, setClassification] = useState("trainee")
     const trainee_button = useRef()
     const trainor_button = useRef()
-    const [error, setError] = useState("")
+    const [error_message, setErrorMessage] = useState("")
+    const error = useRef("")
     const email = useRef("")
     const password = useRef("")
     const router = useRouter()
@@ -24,7 +25,22 @@ export default function Login() {
         form.preventDefault()
         const res = await login(classification, email.current.value, password.current.value)
         if (res.error == "none") router.push("/" + classification)
-        setError(() => res.error)
+        updateError(res.error)
+    }
+
+    const updateError = (error_code) => {
+        switch (error_code) {
+            case "none": {
+                error.current.style.color = "#81BC06"
+                setErrorMessage(() => "Sign In Sucessful")
+            }
+                break
+            case "login-error": {
+                error.current.style.color = "#F35325"
+                setErrorMessage(() => "Incorrect email or password")
+            }
+                break
+        }
     }
 
     const changeClassification = (c) => {
@@ -59,14 +75,14 @@ export default function Login() {
                         <button ref={trainor_button} onClick={() => changeClassification("trainor")} class="classification">Trainor</button>
                         <hr style={{ opacity: "50%" }}></hr>
                     </div>
-                    <h3>{error}</h3>
+                    <p ref={error}>{error_message}</p>
                     <form onSubmit={authenticate}>
                         <div className="login_form">
                             <Input name="Email" type="text" width="100%" ref={email}></Input>
                             <Input name="Password" type="password" width="100%" ref={password}></Input>
                         </div>
-                        <div style={{marginTop: "60px"}}>
-                        <Button bg_color="#174276" type="submit" text="Sign In" width="100%" ></Button>
+                        <div style={{ marginTop: "60px" }}>
+                            <Button bg_color="#174276" type="submit" text="Sign In" width="100%" ></Button>
                         </div>
                     </form>
                 </div>

@@ -44,13 +44,13 @@ export default function Lesson({ lesson_id, number, name, description, joined, a
         container.current.style.backgroundColor = "#F0F0F0"
     }
 
-    const remove_highlight = () => {
+    const removeHighlight = () => {
         container.current.style.backgroundColor = "#FFFFFF"
     }
 
     return (
         <div style={style} >
-            <div onClick={visit} onMouseEnter={highlight} onMouseLeave={remove_highlight} ref={container} style={lesson_style}>
+            <div onClick={visit} onMouseEnter={highlight} onMouseLeave={removeHighlight} ref={container} style={lesson_style}>
                 <span style={title_style}>Lesson {number + 1}: {name}</span>
                 <p style={{opacity: ".9"}}>{description}</p>
             </div>

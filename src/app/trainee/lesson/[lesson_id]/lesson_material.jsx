@@ -18,7 +18,7 @@ export default function LessonMaterial({ number, header, description, material_l
         marginBottom: "50px"
     }   
 
-    const convert_to_pdf_name = (str) => {
+    const convertToPdf = (str) => {
         const regex = new RegExp(' ', 'g');
         return str.replace(regex, '_');
     }
@@ -27,7 +27,7 @@ export default function LessonMaterial({ number, header, description, material_l
         pdf.current.style.backgroundColor = "#F0F0F0"
     }
 
-    const remove_highlight = () => {
+    const removeHighlight = () => {
         pdf.current.style.backgroundColor = "#FFFFFF"
     }
 
@@ -37,8 +37,8 @@ export default function LessonMaterial({ number, header, description, material_l
                 <h2>Section {number + 1}: {header}</h2>
                 <p>{description}</p>
             </div>
-            <div ref={pdf} style={style} onClick={() => router.push(material_link)} onMouseEnter={highlight} onMouseLeave={remove_highlight} >
-                <p style={{color: "#F35325", width: "auto"}}>{convert_to_pdf_name(header)}.pdf</p>
+            <div ref={pdf} style={style} onClick={() => router.push(material_link)} onMouseEnter={highlight} onMouseLeave={removeHighlight} >
+                <p style={{color: "#F35325", width: "auto"}}>{convertToPdf(header)}.pdf</p>
             </div>
         </div>
     )

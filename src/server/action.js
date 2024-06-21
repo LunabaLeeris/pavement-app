@@ -160,3 +160,38 @@ export const addUserToProgram = async (program_id) => {
         return { error: "joining-program-failed" }
     }
 }
+
+export const getUserProfile = async () => {
+    const res = await checkSession()
+    if (res.error != "none" || res.user_data.classification != "trainee") return { error: "session-invalid" }
+
+    const account_id = res.user_data.account_id;
+
+    try {
+        const query_acc = `select * from account where account_id = ${account_id};`
+        const res_acc = await query(query_acc)
+
+        const query_certs = `select (p.name) from (program as p left join 
+        certificate_log as cl on p.program_id = cl.program_id) where cl.account_id = ${account_id};`
+        const res_certs = await query(query_certs)
+
+        const query_contacts = `select * from contact_information where account_id = ${account_id};`
+        const res_contacts = await query(query_contacts)
+
+        const query_exp = `select * from experience where account_id = ${account_id};`
+        const res_exp  = await query(query_exp)
+
+        const query_educ = `select * from education where account_id = ${account_id};`
+        const res_educ = await query(query_educ)
+
+        const query_programs = `select p.name from program as p left join program_users as pu 
+        on p.program_id = pu.program_id where pu.account_id = ${account_id};`
+        const res_programs = await query(query_programs)
+
+        return {error: "none", account: res_acc[0], certificates: res_certs, contacts: res_contacts,  educations: res_educ, experiences: res_exp, programs: res_programs}
+    }
+    catch (err) {
+        console.log("fetching user profile failed: ", err)
+        return { error: "fetching-profile-failed" }
+    }
+}

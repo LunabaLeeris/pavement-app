@@ -58,12 +58,12 @@ export default function ProgramPreview({ program_id, name, joined}) {
         container.current.style.backgroundColor = "#F0F0F0"
     }
 
-    const remove_highlight = () => {
+    const removeHighlight = () => {
         container.current.style.backgroundColor = "#FFFFFF"
     }
 
     return (
-        <div style={style} ref={container} onMouseEnter={highlight} onMouseLeave={remove_highlight} className="program_box" onClick={visit}>
+        <div style={style} ref={container} onMouseEnter={highlight} onMouseLeave={removeHighlight} className="program_box" onClick={visit}>
             <div style={icon_style}>
                 <span style={icon_text_style}>{name[0]+name[1]}</span>
             </div>

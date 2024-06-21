@@ -25,7 +25,7 @@ export default function Page({ params }) {
     if (is_fetching || !res) return <h1>Fetching materials...</h1>
     if (res.error != "none") return <h1>Fetching materials failed...</h1>
 
-    const check_answers = async () => {
+    const checkAnswers = async () => {
         let correct = 0
         let out_of = 0
 
@@ -65,7 +65,7 @@ export default function Page({ params }) {
             </div>
             <div style={{display: "flex", justifyContent: "space-between"}}>
                 <p>Please recheck your answers before submitting</p>
-                <Button bg_color="#F35325" width={"200px"} text="Submit Answers" fn={() => check_answers(input_fields)}></Button>
+                <Button bg_color="#F35325" width={"200px"} text="Submit Answers" fn={() => checkAnswers(input_fields)}></Button>
             </div>
             
         </div>

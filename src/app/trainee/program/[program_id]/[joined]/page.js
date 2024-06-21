@@ -21,7 +21,7 @@ export default function Page({ params }) {
         mutationFn: addCertificateLog
     })
 
-    const { mutateAsync: joinProgram } = useMutation({
+    const { mutateAsync: addToProgram } = useMutation({
         mutationFn: addUserToProgram
     })
 
@@ -33,7 +33,7 @@ export default function Page({ params }) {
         </>
     }
 
-    const claim_certificate = async () => {
+    const claimCertificate = async () => {
         const res = await addToCertificateLog(program_id)
         if (res.error != "none") {
             console.log(res.error)
@@ -43,8 +43,8 @@ export default function Page({ params }) {
         router.push(`/trainee/award/${program_id}`)
     }
 
-    const join_program = async () => {
-        const res = await joinProgram(program_id)
+    const joinProgram = async () => {
+        const res = await addToProgram(program_id)
         if (res.error != "none") {
             console.log(res.error)
             return res.error
@@ -66,12 +66,12 @@ export default function Page({ params }) {
                         <p><b>Trainors:</b> </p>
                         <p><b>Numer Of Trainees:</b> {res.program.number_of_trainees}</p>
                     </div>
-                    <div>
+                    <div style={{display: "flex", gap: "25px"}}>
                         {res.lessons.length == res.finished[0].total ? (
                             claimed ? <Button bg_color="#81BC06" text="Show Certificate" width="250px" fn={() => router.push(`/trainee/award/${program_id}`)}></Button>
-                            : <Button bg_color="#81BC06" text="Claim Certificate" width="250px" fn={claim_certificate}></Button>) : ""}
+                            : <Button bg_color="#81BC06" text="Claim Certificate" width="200px" fn={claimCertificate}></Button>) : ""}
                         
-                        {!joined ? <Button bg_color="#174276" text="Request Join" width="250px" fn={join_program}></Button>: ""}
+                        {!joined ? <Button bg_color="#174276" text="Request Join" width="200px" fn={joinProgram}></Button>: ""}
                     </div>
                 </div>
 
