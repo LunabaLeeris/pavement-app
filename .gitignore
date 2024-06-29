@@ -10,7 +10,7 @@
 /coverage
 
 # configs
-/src/server/config.env
+src/server/config.env
 
 # next.js
 /.next/
