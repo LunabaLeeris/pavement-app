@@ -7,8 +7,8 @@ export const fetchTraineePrograms = async (joined) => {
     const res = await checkSession()
     if (res.error != "none" || res.user_data.classification != "trainee") return { error: "session-invalid" }
 
-    const query_str = `SELECT pv.program_id, pv.name, pv.description, pv.date_created, pv.number_of_trainees, pv.number_of_trainors
-                        FROM program_view pv
+    const query_str = `SELECT pv.program_id, pv.name, pv.description, pv.date_created, 
+                        pv.number_of_trainees, pv.number_of_trainors FROM program_view pv
                         LEFT JOIN program_users pu ON pv.program_id = pu.program_id
                         WHERE ${joined ? `pu.account_id = ${res.user_data.account_id}` : "pu.program_id is NULL"};`
 

@@ -30,7 +30,13 @@ export default function Page({ params }) {
         let out_of = 0
 
         for (const index in input_fields.current) {
-            if (input_fields.current[index].value == res.questions[index].answer) correct++
+            const is_case_sensitive = res.questions[index].case_sensitive
+            let value = input_fields.current[index].value;
+            if (!is_case_sensitive){
+                value = value.toLowerCase()
+            }
+            
+            if (value == res.questions[index].answer) correct++
             out_of++
         }
 

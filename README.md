@@ -14,8 +14,4 @@ Each lesson have exams which should be passed in order for the trainee to move o
 
 Once every lesson is accomplished in a program, a trainee can claim a certificate.
 The purpose of this is to train aspiring miscrosoft employees on certain fields. 
-<<<<<<< HEAD
 Microsoft can then pick from these set of trainees as their new employee. 
-=======
-Microsoft can then pick from these set of trainees as their new employee. 
->>>>>>> dd6f05d303c4f1437451e672aa2870030cc0cc2f

@@ -20,7 +20,7 @@ export default function Programs({ params }) {
             <h1>{res.error}</h1>
         </>
     }
-
+    
     return (
         <>
             <div className="page_section">

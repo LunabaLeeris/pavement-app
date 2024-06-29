@@ -9,6 +9,9 @@
 # testing
 /coverage
 
+# configs
+/src/server/config.env
+
 # next.js
 /.next/
 /out/

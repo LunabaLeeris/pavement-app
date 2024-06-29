@@ -1,10 +1,9 @@
-'use server'
-
+// Install the dependencies 
 import { createConnection } from "mysql2";
 import { config } from "dotenv";
 import { promisify } from "util";
 
-config({ path: "./src/server/config.env" });
+config({ path: "./src/server/config.env" }); 
 
 const db_data = {
     host: process.env.DB_HOST,
@@ -13,9 +12,6 @@ const db_data = {
     database: process.env.DB
 }
 
-console.log("data: ", db_data)
-
-// Connects to the mysql database
 const db = createConnection(db_data);
 export const query = promisify(db.query).bind(db);
 

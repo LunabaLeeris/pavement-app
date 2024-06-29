@@ -7,7 +7,7 @@ export async function POST(req) {
     await testConnection()
     const result = await query(`SELECT * from account where classification_id = ${mapping[credentials.classification]} 
                                 AND email = "${credentials.email}" AND password = "${credentials.password}"`);
-    var response = null
+    let response = null
 
     if (result.length <= 0) response = { error: "login-error" }
     else {

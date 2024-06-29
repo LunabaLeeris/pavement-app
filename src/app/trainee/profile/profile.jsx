@@ -42,7 +42,7 @@ export default function Profile({ account, certificates, contacts, educations, e
                         <div style={{ display: "flex", gap: "25px" }}>
                             <p>{account.email}</p>
                             <p style={{ color: "#235A9F", cursor: "pointer" }}>Edit Profile</p>
-                            <p onClick={() => viewResume} style={{ color: "#81BC06", cursor: "pointer" }}>View Resume</p>
+                            <p onClick={() => viewResume()} style={{ color: "#81BC06", cursor: "pointer" }}>View Resume</p>
                         </div>
                     </div>
                 </div>
